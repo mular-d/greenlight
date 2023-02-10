@@ -49,6 +49,8 @@ func (app *application) rateLimit(next http.Handler) http.Handler {
 					delete(clients, ip)
 				}
 			}
+
+			mu.Unlock()
 		}
 	}()
 
