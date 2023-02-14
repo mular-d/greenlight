@@ -93,5 +93,3 @@ func (m TokenModel) DeleteForUser(scope string, userID int64) error {
 	return err
 
 }
-
-
