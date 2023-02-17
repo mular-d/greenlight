@@ -14,14 +14,14 @@ import (
 
 func (app *application) serve() error {
 	port := os.Getenv("PORT")
-	if port != ""{
-		temp, err := strconv.Atoi(port)
-		if err != nil {
-			app.config.port = temp
-		}
+	if port == "" {
+		port = strconv.Itoa(app.config.port)
+	} else {
+		port = ":" + port
 	}
+	
 	srv := &http.Server{
-		Addr:         fmt.Sprintf(":%d", app.config.port),
+		Addr:         fmt.Sprintf(":%s", port),
 		Handler:      app.routes(),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
