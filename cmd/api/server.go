@@ -16,10 +16,7 @@ func (app *application) serve() error {
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = strconv.Itoa(app.config.port)
-	} else {
-		port = ":" + port
 	}
-	
 	srv := &http.Server{
 		Addr:         fmt.Sprintf(":%s", port),
 		Handler:      app.routes(),
