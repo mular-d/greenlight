@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"context"
@@ -57,13 +57,13 @@ type application struct {
 	wg     sync.WaitGroup
 }
 
-func main() {
+func SetupAPI() {
 	var cfg config
 
 	flag.IntVar(&cfg.port, "port", 4000, "API Server Port")
 	flag.StringVar(&cfg.env, "env", "development", "Environment (development|staging|production)")
 
-	flag.StringVar(&cfg.db.dsn, "db-dsn", "", "PostgresSQL DSN")
+	flag.StringVar(&cfg.db.dsn, "db-dsn", "postgresql://postgres:0cCz50fjKokY59CxZiNY@containers-us-west-197.railway.app:6685/railway", "PostgresSQL DSN")
 
 	flag.IntVar(&cfg.db.maxOpenConns, "db-max-open-conns", 25, "PostgreSQL max open connections")
 	flag.IntVar(&cfg.db.maxIdleConns, "db-max-idle-conns", 25, "PostgreSQL max idle connections")
