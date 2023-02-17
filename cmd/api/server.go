@@ -13,7 +13,7 @@ import (
 )
 
 func (app *application) serve() error {
-	port := os.Getenv("$PORT")
+	port := os.Getenv("PORT")
 	if port != ""{
 		temp, err := strconv.Atoi(port)
 		if err != nil {
