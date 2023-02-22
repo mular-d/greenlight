@@ -112,7 +112,7 @@ func (app *application) createPasswordResetTokenHandler(w http.ResponseWriter, r
 			"passwordResetToken": token.Plaintext,
 		}
 
-		err = app.mailer.Send(user.Email, "token_password_reset.tmpl", data)
+		err = app.mailer.Send(user.Email, "token_password_reset.tmpl.html", data)
 		if err != nil {
 			app.logger.PrintError(err, nil)
 		}

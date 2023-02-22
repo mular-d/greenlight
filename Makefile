@@ -23,7 +23,7 @@ confirm:
 ## run/api: run the cmd/api application
 .PHONEY: run/api
 run/api:
-	go run ./cmd/api -db-dsn=${GREENLIGHT_DB_DSN}
+	go run . -db-dsn=${GREENLIGHT_DB_DSN}
 
 ## db/psql: connect ot the database using psql
 .PHONEY: db/psql
