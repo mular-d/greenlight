@@ -23,7 +23,7 @@ confirm:
 ## run/api: run the cmd/api application
 .PHONEY: run/api
 run/api:
-	go run . -db-dsn=${GREENLIGHT_DB_DSN}
+	go run . -db-dsn=${GREENLIGHT_DB_DSN} -jwt-secret=${JWT_SECRET}
 
 ## db/psql: connect ot the database using psql
 .PHONEY: db/psql
