@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/targerian1999/greenlight/internal/validator"
+	passwordvalidator "github.com/wagslane/go-password-validator"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -71,6 +72,10 @@ func ValidatePasswordPlaintext(v *validator.Validator, password string) {
 	v.Check(password != "", "password", "must be provided")
 	v.Check(len(password) >= 8, "password", "must be at least 8 bytes long")
 	v.Check(len(password) <= 72, "password", "must not be more than 72 bytes long")
+
+	const minEntropyBits = 60
+    err := passwordvalidator.Validate(password, minEntropyBits)
+	v.Check(err == nil, "password", "insecure password, try including more special characters, using uppercase letters or using a longer password") 
 }
 
 func ValidateUser(v *validator.Validator, user *User) {
